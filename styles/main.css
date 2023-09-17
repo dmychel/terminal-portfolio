@@ -1,3 +1,101 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --main-color: #211D1B;
+    --main-font-color: #00DFFC;
+    line-height: 1.5;
+    font-family: 'Courier Prime', monospace;
+}
+
 body {
-    background-color: orange;
+    background-color: var(--main-color);
+    color: var(--main-font-color);
+    padding: 20px;
+}
+
+section:not(.ascii-art) {
+    margin-top: 1.5%;
+}
+
+.ascii-art {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    white-space: pre;
+}
+
+
+.terminal-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.help-container-el {
+    display: flex;
+    width: 100%;
+}
+
+.command-el {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+}
+
+.project-help {
+    display: flex;
+}
+
+
+@keyframes append-animate {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+div {
+    animation: append-animate 0.15s linear;
+}
+
+p {
+    animation: append-animate 0.15s linear;
+}
+
+label {
+    width: 30%;
+}
+
+input {
+    background-color: var(--main-color);
+    border: none;
+    outline: none;
+    color: var(--main-font-color);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 70%;
+}
+
+/* TABLETS */
+@media (max-width:768px) {
+
+    input {
+        width: 50%;
+    }
 }
