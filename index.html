@@ -10,7 +10,30 @@
 </head>
 
 <body>
-    <main></main>
+    <main>
+        <div class="terminal" id="terminal">
+            <section class="ascii-art" id="ascii">
+                <span>  _____       _               _____                   _            </span>
+                <span> |  _  \     | |             /  __ \                 | |           </span>
+                <span> | | | |_   _| | ___  _ __   | /  \/_ __ _____      _| | ___ _   _ </span>
+                <span> | | | | | | | |/ _ \| '_ \  | |   | '__/ _ \ \ /\ / / |/ _ \ | | |</span>
+                <span> | |/ /| |_| | | (_) | | | | | \__/\ | | (_) \ V  V /| |  __/ |_| |</span>
+                <span> |___/  \__, |_|\___/|_| |_|  \____/_|  \___/ \_/\_/ |_|\___|\__, |</span>
+                <span>         __/ |                                                __/ |</span>
+                <span>        |___/                                                |___/ </span>
+            </section>
+            <section class="intro" id="intro">
+                <span>Welcome to my interactive portfolio terminal.</span><br>
+                <span style="color: yellow">Type 'help' for a list of commands.</span>
+            </section>
+            <section class="terminal-display" id="terminalDisplay"></section>
+            <section class="command" id="command">
+                <label for="command" id="inputLabel"></label>
+                <input type="text" name="command" id="userCommand">
+                <div class="liner"></div>
+            </section>
+        </div>
+    </main>
 </body>
 
 </html>
