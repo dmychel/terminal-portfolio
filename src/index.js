@@ -394,27 +394,23 @@ userCommand.addEventListener('keypress', function (e) {
                 // CREATE CONTAINERS
                 const contactContainer = document.createElement('section');
                 const tip = document.createElement('p');
-                const email = document.createElement('p');
                 const linkedIN = document.createElement('p');
                 const gitHub = document.createElement('p');
 
 
                 // CREATE CONTENT
                 const tipNode = document.createTextNode('Tip: Try tpying \'cd linkedin\'');
-                const emailNode = document.createTextNode('dyloncrowley86@gmail.com');
                 const linkedInNode = document.createTextNode('https://www.linkedin.com/in/dylon-crowley-perez-248b0823b/');
                 const gitHubNode = document.createTextNode('https://github.com/dmychel');
 
                 // APPEND CONTAINERS
                 terminalDisplay.append(contactContainer);
                 contactContainer.prepend(tip);
-                contactContainer.append(email);
                 contactContainer.append(linkedIN);
                 contactContainer.append(gitHub);
 
                 // APPEND CONTENT
                 tip.appendChild(tipNode);
-                email.appendChild(emailNode);
                 linkedIN.appendChild(linkedInNode);
                 gitHub.appendChild(gitHubNode);
 
@@ -427,13 +423,6 @@ userCommand.addEventListener('keypress', function (e) {
                 break
             }
 
-            case 'cd email': {
-                userCommand.value = '';
-
-                window.open('mailto:dyloncrowley86@gmail.com')
-
-                break
-            }
             case 'cd linkedin': {
                 userCommand.value = '';
 
