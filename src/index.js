@@ -32,10 +32,25 @@ onload = function findOS() {
 }
 
 
-document.onkeydown = function(e) {
-    if(e.keyCode === 38){;
-     let command = userHistory.splice(-1);
-     userCommand.value = command;
+document.onkeydown = function (e) {
+    if (e.keyCode === 38) {
+        let command = userHistory.splice(-1);
+        userCommand.value = command;
+    }
+}
+
+document.onkeydown = function (e) {
+    if (e.keyCode === 9) {
+        e.preventDefault()
+        if (userCommand.value.includes('st')) {
+            userCommand.value = 'cd street-fghter-combat'
+        }
+        else if (userCommand.value.includes('vi')) {
+            userCommand.value = 'cd video-game-library'
+        }
+        else if (userCommand.value.includes('ca')) {
+            userCommand.value = 'cd calculator'
+        }
     }
 }
 
@@ -81,8 +96,14 @@ userCommand.addEventListener('keypress', function (e) {
                 const clear = document.createElement('p');
                 const clearNode = document.createTextNode('-- clear');
 
+                const keyShortcuts = document.createElement('h2');
+                const keyShortcutNode = document.createTextNode('Keyboard shortcuts')
+
+                const tab = document.createElement('p');
+                const tabNode = document.createTextNode('-- tab button')
+
                 const history = document.createElement('p');
-                const historyNode = document.createTextNode('-- \'up arrow key\'');
+                const historyNode = document.createTextNode('-- up arrow key');
 
                 // CREATE COMMAND DESCRIPTIONS
                 const aboutDescription = document.createElement('p');
@@ -105,7 +126,10 @@ userCommand.addEventListener('keypress', function (e) {
 
                 const clearDescription = document.createElement('p');
                 const clearDescriptionNode = document.createTextNode('Clears terminal.');
-                
+
+                const tabDescription = document.createElement('p');
+                const tabDescriptionNode = document.createTextNode('Auto fill command');
+
                 const historyDescription = document.createElement('p');
                 const historyDescriptionNode = document.createTextNode('Cycles through command history.');
 
@@ -137,6 +161,9 @@ userCommand.addEventListener('keypress', function (e) {
                 clear.appendChild(clearNode);
                 commandEl.append(clear);
 
+                tab.appendChild(tabNode);
+                commandEl.appendChild(tab);
+
                 history.appendChild(historyNode);
                 commandEl.append(history);
 
@@ -159,6 +186,9 @@ userCommand.addEventListener('keypress', function (e) {
                 guiDescription.appendChild(guiDescriptionNode);
                 descriptionEl.append(guiDescription);
 
+                tabDescription.append(tabDescriptionNode);
+                descriptionEl.append(tabDescription)
+
                 clearDescription.appendChild(clearDescriptionNode);
                 descriptionEl.append(clearDescription);
 
@@ -175,6 +205,7 @@ userCommand.addEventListener('keypress', function (e) {
                 cd.style.color = 'yellow';
                 cdHome.style.color = 'yellow';
                 gui.style.color = 'yellow';
+                tab.style.color = 'yellow'
                 clear.style.color = 'yellow';
                 history.style.color = 'yellow';
 
@@ -241,6 +272,7 @@ userCommand.addEventListener('keypress', function (e) {
                 // CREATE CONTAINERS
                 const projects = document.createElement('section');
                 const projectTip = document.createElement('p');
+                const projectTip2 = document.createElement('p');
                 const streetCombat = document.createElement('div');
                 const calculator = document.createElement('div');
                 const gameLibrary = document.createElement('div');
@@ -248,6 +280,7 @@ userCommand.addEventListener('keypress', function (e) {
 
                 // CREATE CONTENT
                 const projectHelpCommand = document.createTextNode('Tip: type  \'project-help\' for additional commands.')
+                const projectTip2Node = document.createTextNode('Tip: begin typing project name then pressing the tab button to autofill')
                 const streetCombatNode = document.createTextNode('street-fighter-combat');
                 const calculatorNode = document.createTextNode('calculator');
                 const gameLibraryNode = document.createTextNode('video-game-library');
@@ -256,20 +289,22 @@ userCommand.addEventListener('keypress', function (e) {
                 // APPEND CONTAINER;
                 terminalDisplay.append(projects);
                 projects.prepend(projectTip);
-                projects.append(streetCombat);
+                projectTip2.appendChild(projectTip2Node)
                 projects.append(calculator);
                 projects.append(gameLibrary);
+                projects.append(streetCombat);
 
 
                 // APPEND CONTENT
                 projectTip.appendChild(projectHelpCommand);
+                projectTip.appendChild(projectTip2);
                 streetCombat.appendChild(streetCombatNode);
                 calculator.appendChild(calculatorNode);
                 gameLibrary.appendChild(gameLibraryNode);
 
-                 // ADD CLASS
-                 projectTip.style.color = 'yellow';
-                
+                // ADD CLASS
+                projectTip.style.color = 'yellow';
+
 
                 scrollToBottom();
 
@@ -343,7 +378,7 @@ userCommand.addEventListener('keypress', function (e) {
             case 'cd video-game-library': {
                 userCommand.value = '';
 
-                window.open('https://dmychel.github.io/library/')
+                window.open('https://dmychel.github.io/game-archive/')
 
                 break
             }
@@ -366,7 +401,7 @@ userCommand.addEventListener('keypress', function (e) {
 
             case 'cd video-game-library-repo': {
 
-                window.open('https://github.com/dmychel/library')
+                window.open('https://github.com/dmychel/game-archive')
 
                 break
             }
@@ -419,7 +454,7 @@ userCommand.addEventListener('keypress', function (e) {
                 tip.style.color = 'yellow';
 
                 scrollToBottom();
-                
+
                 break
             }
 
@@ -461,8 +496,8 @@ userCommand.addEventListener('keypress', function (e) {
                 }
                 else {
                     console.log('not empty');
-                     // INPUT LABEL
-                     if (rootUser === 'linux') {
+                    // INPUT LABEL
+                    if (rootUser === 'linux') {
                         inputLabel.innerHTML = '[visiter@Linux ~]$';
                     }
                     else if (rootUser === 'macos') {
@@ -479,7 +514,7 @@ userCommand.addEventListener('keypress', function (e) {
                     terminal.prepend(asciiSection, introSection);
                     terminalDisplay.innerHTML = '';
 
-                   
+
                 }
 
                 break
@@ -513,7 +548,7 @@ userCommand.addEventListener('keypress', function (e) {
     }
 })
 
-function scrollToBottom(timedelay=0) {
+function scrollToBottom(timedelay = 0) {
     let scrollId;
     let height = 0;
     let minScrollHeight = 100;
@@ -525,5 +560,5 @@ function scrollToBottom(timedelay=0) {
             clearInterval(scrollId);
         }
         height += minScrollHeight;
-    }, timedelay);           
+    }, timedelay);
 }
